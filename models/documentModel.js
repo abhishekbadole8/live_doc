@@ -20,6 +20,11 @@ const documentSchema = mongoose.Schema({
     ref: "User",
     default: null,
   },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Document", documentSchema);

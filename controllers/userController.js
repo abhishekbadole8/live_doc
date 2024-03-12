@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const nodemailer = require("nodemailer");
-require("dotenv").config();
 
 // Function to register a new user
 const createUser = async (req, res, next) => {
