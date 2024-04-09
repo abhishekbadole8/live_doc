@@ -3,7 +3,7 @@ const { default: mongoose } = require("mongoose");
 const documentSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    default: "New Document",
   },
   content: {
     type: String,
@@ -15,15 +15,20 @@ const documentSchema = mongoose.Schema({
       ref: "User",
     },
   ],
-  currentlyEditing: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    default: null,
-  },
+  currentlyEditing: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
+  },
+  shareCode: {
+    type: String,
+    unique: true,
   },
 });
 

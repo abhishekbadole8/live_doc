@@ -14,11 +14,12 @@ const authHandler = async (req, res, next) => {
     const token = authHeader.split(" ")[1];
 
     // Verify the token
-    const decoded = jwt.verify(token, process.env.SECRET);
-    req.userId = decoded.user._id;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;
 
     next();
   } catch (error) {
+    console.log(error);
     return res.status(401).json({ error: "Invalid token" });
   }
 };
